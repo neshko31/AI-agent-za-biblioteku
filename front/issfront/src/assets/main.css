@@ -1,0 +1,204 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-main:     #7a9068;
+  --card-bg:     #c8d5aa;
+  --card-bg-alt: #d4ddb8;
+  --sidebar-bg:  #4a6741;
+  --sidebar-hover: #3a5331;
+  --btn-primary: #3d5c35;
+  --btn-hover:   #2e4728;
+  --btn-secondary: #548049;
+  --btn-secondary-hover:   #3d5c35;
+  --text-dark:   #1e2d14;
+  --text-mid:    #3a4e30;
+  --text-light:  #ffffff;
+  --input-bg:    #ffffff;
+  --border:      #9ab07a;
+  --radio-active:#4a6741;
+  --radio-inactive:#a8b898;
+  --shadow:      0 4px 24px rgba(30,45,20,0.13);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* ── Card ────────────────────────────────── */
+.card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 2.5rem 3rem;
+}
+
+/* ── Page wrapper ────────────────────────── */
+.page-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* ── Titles ──────────────────────────────── */
+h1 {
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: var(--text-dark);
+  margin-bottom: 1.8rem;
+  text-align: center;
+}
+h2 { font-size: 1.4rem; font-weight: 600; color: var(--text-dark); margin-bottom: 1rem; }
+
+/* ── Form elements ───────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+.form-group label { font-size: 0.85rem; color: var(--text-mid); }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+select {
+  background: var(--input-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+input:focus, select:focus { border-color: var(--btn-primary); }
+
+/* ── Buttons ─────────────────────────────── */
+.btn-primary {
+  background: var(--btn-primary);
+  color: var(--text-light);
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 2.5rem;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  display: block;
+  margin: 2rem auto 0;
+}
+.btn-primary:hover  { background: var(--btn-hover); }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  background: var(--radio-inactive);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 50px;
+  padding: 0.65rem 1.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-secondary:hover { background: #8fa870; }
+
+.btn-small {
+  background: var(--btn-primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.35rem 1rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.btn-small:hover { background: var(--btn-hover); }
+
+/* ── Radio options ───────────────────────── */
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  margin-bottom: 0.8rem;
+}
+.radio-circle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--radio-inactive);
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.radio-circle.active { background: var(--radio-active); }
+.radio-label { font-size: 1.25rem; color: var(--text-dark); }
+
+/* ── Error message ───────────────────────── */
+.error-msg {
+  color: #8b1a1a;
+  background: #f8d7d7;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* ── Sidebar layout ──────────────────────── */
+html, body, #app {
+  height: 100%;
+}
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  background: var(--bg-main);
+}
+.sidebar {
+  width: 210px;
+  background: var(--sidebar-bg);
+  color: white;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-profile {
+  padding: 1.5rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.sidebar-avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+.sidebar-name { font-size: 0.9rem; text-align: center; line-height: 1.3; }
+.sidebar-nav { padding: 1rem 0; flex: 1; }
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.75rem 1.3rem;
+  cursor: pointer;
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  transition: background 0.15s;
+  text-decoration: none;
+}
+.nav-item:hover, .nav-item.active { background: var(--sidebar-hover); color: white; }
+.nav-icon { font-size: 1.15rem; }
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--card-bg-alt);
+  padding: 2.5rem 3rem;
+  overflow-y: auto;
+}

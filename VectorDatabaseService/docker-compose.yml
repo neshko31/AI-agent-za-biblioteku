@@ -1,0 +1,163 @@
+version: "3.8"
+
+services:
+  # ── Milvus dependencies ───────────────────────────────────────────────────
+  etcd:
+    container_name: milvus-etcd
+    image: quay.io/coreos/etcd:v3.5.25
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=4294967296
+      - ETCD_SNAPSHOT_COUNT=50000
+    volumes:
+      - ./volumes/etcd:/etcd
+    command: etcd -advertise-client-urls=http://etcd:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+    healthcheck:
+      test: ["CMD", "etcdctl", "endpoint", "health"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  minio:
+    container_name: milvus-minio
+    image: minio/minio:RELEASE.2024-12-18T13-15-44Z
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./volumes/minio:/minio_data
+    command: minio server /minio_data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  # ── Milvus standalone ─────────────────────────────────────────────────────
+  standalone:
+    container_name: milvus-standalone
+    image: milvusdb/milvus:v2.6.13
+    command: ["milvus", "run", "standalone"]
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      ETCD_ENDPOINTS: etcd:2379
+      MINIO_ADDRESS: minio:9000
+      MQ_TYPE: woodpecker
+    volumes:
+      - ./volumes/milvus:/var/lib/milvus
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 30s
+      timeout: 20s
+      retries: 5
+    ports:
+      - "19530:19530"   
+      - "9091:9091"     
+    depends_on:
+      etcd:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+
+  # ── Application ───────────────────────────────────────────────────────────
+  vector-database-service:
+    build:
+      context: .              
+      dockerfile: Dockerfile
+    image: vector-database-service:latest
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    environment:
+      MILVUS_HOST: standalone
+      MILVUS_PORT: 19530
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_MODEL: qwen2.5:1.5b
+      APP_PORT: 8000
+      REDIS_HOST: redis-cache-books
+      REDIS_PORT: 6379                 
+      EXACT_CACHE_TTL: 3600            
+      SEMANTIC_CACHE_TTL: 3600       
+      EMBED_INDEX_TTL: 3600  
+      SEMANTIC_THRESHOLD: "0.95"
+    volumes:
+      - ./data:/app/data:ro
+    depends_on:
+      standalone:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+      redis-cache-books:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 20s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # ── LLM (Ollama) ────────────────────────────────────────────────
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  # ── Attu UI ─────────────────────────────────────────────────────
+  attu:
+    image: zilliz/attu:v2.4
+    container_name: attu
+    environment:
+      MILVUS_URL: standalone:19530
+    ports:
+      - "8090:3000"
+    depends_on:
+      standalone:
+        condition: service_healthy
+  
+  # ── Streamlit ───────────────────────────────────────────────────
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    container_name: streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      API_URL: "http://vector-database-service:8000"
+    depends_on:
+      - vector-database-service
+    restart: on-failure
+
+  # ── Redis ───────────────────────────────────────────────────
+  redis-cache-books:
+    image: redis:7.2-alpine
+    container_name: redis-cache-books
+    ports:
+      - "6381:6379"
+    volumes:
+      - redis_cache_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# ── Named volumes ─────────────────────────────────────────────────────────────
+volumes:
+  ollama_data: {}
+  redis_cache_data: {}

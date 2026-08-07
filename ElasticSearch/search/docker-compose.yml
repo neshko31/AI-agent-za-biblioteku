@@ -1,0 +1,85 @@
+services:
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.0.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:9200/_cluster/health || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+    networks:
+      - nais-net
+
+  es-init:
+    image: curlimages/curl:latest
+    container_name: es-init
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    volumes:
+      - ./src/main/resources:/data
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "==> Creating index: books"
+        curl -s -X PUT "http://elasticsearch:9200/books" \
+          -H "Content-Type: application/json" \
+          -d @/data/books_mapping.json
+
+        echo "==> Creating index: persons"
+        curl -s -X PUT "http://elasticsearch:9200/persons" \
+          -H "Content-Type: application/json" \
+          -d @/data/persons_mapping.json
+
+        echo "==> Importing books..."
+        curl -s -X POST "http://elasticsearch:9200/_bulk" \
+          -H "Content-Type: application/x-ndjson" \
+          --data-binary @/data/books_bulk.ndjson
+
+        echo "==> Importing persons..."
+        curl -s -X POST "http://elasticsearch:9200/_bulk" \
+          -H "Content-Type: application/x-ndjson" \
+          --data-binary @/data/persons_bulk.ndjson
+
+        echo "==> Done!"
+        curl -s "http://elasticsearch:9200/books/_count"
+        curl -s "http://elasticsearch:9200/persons/_count"
+    networks:
+      - nais-net
+    restart: "no"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nais-search
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_ELASTICSEARCH_URIS=http://elasticsearch:9200
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      es-init:
+        condition: service_completed_successfully
+    networks:
+      - nais-net
+    restart: on-failure
+
+volumes:
+  es_data:
+    driver: local
+
+networks:
+  nais-net:
+    driver: bridge

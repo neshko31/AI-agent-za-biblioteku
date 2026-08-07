@@ -1,0 +1,40 @@
+{
+  "mappings": {
+    "properties": {
+      "personId": {
+        "type": "keyword"
+      },
+      "firstName": {
+        "type": "keyword"
+      },
+      "lastName": {
+        "type": "keyword"
+      },
+      "placeOfBirth": {
+        "type": "text",
+        "analyzer": "standard"
+      },
+      "dateOfBirth": {
+        "type": "date",
+        "format": "yyyy-MM-dd"
+      },
+      "dateOfDeath": {
+        "type": "date",
+        "format": "yyyy-MM-dd"
+      },
+      "role": {
+        "type": "keyword"
+      },
+      "genres": {
+        "type": "keyword"
+      },
+      "books": {
+        "type": "keyword"
+      },
+      "bio": {
+        "type": "text",
+        "analyzer": "standard"
+      }
+    }
+  }
+}

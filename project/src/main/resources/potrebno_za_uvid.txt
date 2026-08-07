@@ -1,0 +1,8 @@
+EXPLAIN (ANALYZE, BUFFERS)
+SELECT k.isbn, k.naslov, COUNT(c.jmbg_clana) AS broj_citanja
+FROM knjiga k
+JOIN citanje_eknjige c ON c.isbn_eknjige = k.isbn
+WHERE k.zanr_id = 1
+  AND c.datum_poslednjeg_pristupa_ck >= CURRENT_DATE - INTERVAL '30 days'
+GROUP BY k.isbn, k.naslov
+ORDER BY broj_citanja DESC;

@@ -1,0 +1,26 @@
+server:
+  port: 9080
+
+spring:
+  application:
+    name: elastic-search-books-reviews-service
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  elasticsearch:
+    uris: http://localhost:9200
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true

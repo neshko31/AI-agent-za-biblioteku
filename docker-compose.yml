@@ -1,0 +1,192 @@
+services:
+
+  postgres-iis:
+    image: postgres:16-alpine
+    container_name: postgres-iis
+    environment:
+      POSTGRES_DB: iis_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_iis_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - library-net
+
+  postgres-request:
+    image: postgres:16-alpine
+    container_name: postgres-request
+    environment:
+      POSTGRES_DB: requestdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_request_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - library-net
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - library-net
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.0.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:9200/_cluster/health || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+    networks:
+      - library-net
+
+  es-init:
+    image: curlimages/curl:latest
+    container_name: es-init
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    volumes:
+      - ./ElasticSearch/search/src/main/resources:/data
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "==> Creating index: books"
+        curl -s -X PUT "http://elasticsearch:9200/books" \
+          -H "Content-Type: application/json" \
+          -d @/data/books_mapping.json
+
+        echo "==> Creating index: persons"
+        curl -s -X PUT "http://elasticsearch:9200/persons" \
+          -H "Content-Type: application/json" \
+          -d @/data/persons_mapping.json
+
+        echo "==> Importing books..."
+        curl -s -X POST "http://elasticsearch:9200/_bulk" \
+          -H "Content-Type: application/x-ndjson" \
+          --data-binary @/data/books_bulk.ndjson
+
+        echo "==> Importing persons..."
+        curl -s -X POST "http://elasticsearch:9200/_bulk" \
+          -H "Content-Type: application/x-ndjson" \
+          --data-binary @/data/persons_bulk.ndjson
+
+        echo "==> Done!"
+        curl -s "http://elasticsearch:9200/books/_count"
+        curl -s "http://elasticsearch:9200/persons/_count"
+    networks:
+      - library-net
+    restart: "no"
+
+  search:
+    build:
+      context: ./ElasticSearch/search
+      dockerfile: Dockerfile
+    container_name: search
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_ELASTICSEARCH_URIS: http://elasticsearch:9200
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      EUREKA_CLIENT_ENABLED: "false"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      es-init:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    networks:
+      - library-net
+    restart: on-failure
+
+  request-service:
+    build:
+      context: ./requestService
+      dockerfile: Dockerfile
+    container_name: request-service
+    ports:
+      - "8086:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-request:5432/requestdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      EUREKA_CLIENT_ENABLED: "false"
+    depends_on:
+      postgres-request:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - library-net
+    restart: on-failure
+
+  iis:
+    build:
+      context: ./project
+      dockerfile: Dockerfile
+    container_name: iis
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-iis:5432/iis_db
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      SEARCH_SERVICE_BASE_URL: http://search:8080
+    volumes:
+      - knjige_data:/app/src/main/resources/knjige
+    depends_on:
+      postgres-iis:
+        condition: service_healthy
+      search:
+        condition: service_started
+    networks:
+      - library-net
+    restart: on-failure
+
+volumes:
+  postgres_iis_data:
+  postgres_request_data:
+  redis_data:
+  es_data:
+  knjige_data:
+
+networks:
+  library-net:
+    driver: bridge

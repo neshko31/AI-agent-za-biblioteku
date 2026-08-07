@@ -1,0 +1,30 @@
+# Sets the base image (slim version reduces size by excluding unnecessary packages)
+FROM python:3.11-slim
+
+# Prevents Python from writing .pyc files to disk (keeps container clean)
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Ensures Python output is sent straight to the logs without being buffered
+ENV PYTHONUNBUFFERED=1
+
+# Sets the internal working directory where all following commands will run
+WORKDIR /app
+
+# Installs dependencies without storing a local cache to save image space
+RUN pip install --no-cache-dir streamlit==1.35.0 requests==2.32.2
+
+# Copies the application script from the local machine into the current /app directory
+COPY streamlit_app.py .
+
+# Documents that the container intends to listen on port 8501 at runtime
+EXPOSE 8501
+
+# Configures the healthcheck using a Python one-liner to ping the Streamlit health endpoint
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8501/_stcore/health')" || exit 1
+
+    # The execution command to launch the app; headless=true prevents opening a browser window
+CMD ["streamlit", "run", "streamlit_app.py", \
+     "--server.port=8501", \
+     "--server.address=0.0.0.0", \
+     "--server.headless=true"]
