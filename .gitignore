@@ -32,4 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
+### VectorDatabase Data ###
 VectorDatabaseService/volumes/
+VectorDatabaseService/scripts/data/
+VectorDatabaseService/data/

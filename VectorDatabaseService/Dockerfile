@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Installs the CPU-optimized version of PyTorch to significantly reduce image size
-# CPU-only torch (~200 MB vs ~800 MB CUDA) — must be installed before sentence-transformers
+# CPU-only torch (~200 MB vs ~800 MB CUDA) - must be installed before sentence-transformers
 RUN pip install --no-cache-dir \
     --extra-index-url https://download.pytorch.org/whl/cpu \
     "torch==2.3.1+cpu"

@@ -15,7 +15,7 @@ from config import EUREKA_SERVER, APP_NAME
 
 app = FastAPI(
     title="Vector Database Service - Library",
-    description="Books and reviews vector search API with semantic, hybrid, and chat endpoints.",
+    description="Vector Database used for vector search API with semantic, hybrid, and chat endpoints.",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
