@@ -1,0 +1,46 @@
+UKUPNO ANALIZIRANO KNJIGA: 8099
+
+======================================================================
+1) START/END MARKER PROVERA
+======================================================================
+  Strogi START marker (THIS/THE PROJECT GUTENBERG EBOOK): 7924 / 8099 (97.8%)
+  Strogi END marker:                                     7950 / 8099 (98.2%)
+  Oba stroga markera prisutna (čisto izdvajanje moguć):  7924 / 8099 (97.8%)
+  Generički START pogodak ali NE strogi (druga varijanta teksta): 120
+  Generički END pogodak ali NE strogi:                            0
+  NEMA NIKAKAV START marker (ni strogi ni generički):    55
+  NEMA NIKAKAV END marker:                               149
+  >> Fajlovi bez ikakvog START markera (pregledaj ručno): ['108', '1661', '1685', '1771', '1773', '1780', '1782', '1784', '1787', '1793']...
+
+======================================================================
+2) SADRŽAJ (TABLE OF CONTENTS) NA POČETKU/KRAJU
+======================================================================
+  Ima prepoznatljiv 'Contents' heading: 3187 / 8099 (39.4%)
+  Od toga, na početku knjige (pozicija <= 15%): 3180
+  Od toga, na kraju knjige (pozicija >= 85%):   4
+  Napomena: TOC odsustvo NE znači da knjiga nema poglavlja - vidi tačku 3.
+
+======================================================================
+3) CHAPTER POKRIVENOST
+======================================================================
+  Knjige sa >= 2 CHAPTER markera (smatramo da imaju poglavlja): 2810 / 8099 (34.7%)
+  Knjige BEZ formalnih poglavlja (0-1 marker):                  5289 / 8099 (65.3%)
+  >> Ovaj drugi broj ide u granu 'tretiraj celu knjigu kao jedno poglavlje'.
+
+======================================================================
+4) DISTRIBUCIJA DUŽINE POGLAVLJA / CELIH KNJIGA
+======================================================================
+  Broj poglavlja ukupno (iz knjiga koje imaju poglavlja): 79348
+  Dužina poglavlja (reči) - min/median/mean/max: 2 / 2498 / 2979 / 483770
+  Poglavlja duža od 15000 reči (kandidati za fallback chunking u koraku 2): 541
+  Za knjige BEZ poglavlja, dužina cele knjige (reči) - min/median/mean/max: 1 / 32702 / 47405 / 963460
+
+======================================================================
+5) GRUBA PROZA/POEZIJA HEURISTIKA
+======================================================================
+  Knjige koje heuristika označava kao 'verovatno stih/poezija': 727 / 8099 (9.0%)
+  Prosečna medijana reči-po-liniji (ceo korpus): 11.33
+  Prosečna gustina interpunkcije (ceo korpus): 0.02668
+  NAPOMENA: ovo je gruba signalna heuristika, ne pouzdana klasifikacija.
+  Služi da se proceni KOLIKO knjiga verovatno nije standardna proza,
+  ne da se svaka knjiga tačno etiketira.

@@ -16,6 +16,7 @@ GoodReads dataset: https://cseweb.ucsd.edu/~jmcauley/datasets/goodreads.html
 # After finding books in files that say "has_image":false manually, there should be only one book without an image.
 # After running the script to check which book has no e-text, there should be only one book without it.
 # After running the script for deleting books twice (once for each of those books with their respected book_id), there should be 8099 books in the dataset.
+# At last, the ebook for book_id 14329911 should be manually deleted (etext is 3470).
 
 import pandas as pd
 import gzip, json
