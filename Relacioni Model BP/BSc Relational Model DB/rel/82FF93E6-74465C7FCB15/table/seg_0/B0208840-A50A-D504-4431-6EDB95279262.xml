@@ -1,0 +1,133 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B0208840-A50A-D504-4431-6EDB95279262" name="Čet_Sesija">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>88EE9648-7D78-62AE-EC7A-F24E12E77A33</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_čet_sesije" id="D1CCD7E6-4F23-0787-4C26-DB60A2CD94E4">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>B35AA0AD-3E7B-62BC-E817-9F436A3473C8</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="naslov_čet_sesije" id="52DF8C2A-30D5-97D1-3C5B-5CF8A50058A6">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>266E385D-DF29-2A9F-82EF-1A6BE80C24B6</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="datum_kreiranja_čet_sesije" id="65AE955C-FC45-A9CD-06DA-963131E73C2D">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>A57362C1-7804-F6D1-35D5-A2DF416815A1</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="datum_aktivnosti_čet_sesije" id="9BA61CB3-7443-7421-2E36-F4F65B90A3B7">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>DE5CC2EF-0640-7EA8-58A6-5F091C56E1EA</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sažetak_akitvnosti_čet_sesije" id="CBC04C39-CEE7-513D-CA35-1AB6A9E3BDCB">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>A0EE65F2-4392-E4B7-3727-99C866319603</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="arhivirana_čet_sesija" id="D32C013B-2A03-2978-49ED-A413562C5268">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>81C77D41-3A07-CE19-28BA-06DA9AF9801B</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="obrisana_čet_sesija" id="55572694-DC21-F131-1D8A-30BC2271C5F4">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>8A9DCE38-D1BF-1027-45D5-0AD5885D6698</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Član_Biblioteke_id_korisnika" id="E858AD91-4F35-B157-987B-F6C849B99D11">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>B4A0A419-880A-CBED-D1BE-9E7B9536C614</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C72A42D8-DDCC-C39B-896F-946556D82A5F" referredColumn="7BF37CB3-F891-46D9-5A7B-577CC5668E2F"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BD59DED6-9D95-9E3F-CB08-1BCAE73170A0" name="Čet_Sesija_PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>852EC7E2-6D4C-0C9A-2500-F4A6DBB4EDD8</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D1CCD7E6-4F23-0787-4C26-DB60A2CD94E4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="40F52F9E-B0D6-BBDB-2F58-CC6FE6D546C8" name="Čet_Sesija_Član_Biblioteke_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>053A0E40-F993-BBC3-63AF-BF53D0D44CDD</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E858AD91-4F35-B157-987B-F6C849B99D11"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

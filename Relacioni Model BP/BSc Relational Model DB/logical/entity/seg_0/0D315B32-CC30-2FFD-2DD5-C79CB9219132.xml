@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0D315B32-CC30-2FFD-2DD5-C79CB9219132" name="Primerak_Knjige">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:55:29 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_primerka_knjige" id="C927AFE2-765E-D073-6D45-7659E2DEFBEC">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:55:40 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="godina_izdanja_primerka_knjige" id="FD375F34-D7CB-3683-1457-8C7D09E2585E">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:55:50 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_knjige" id="D61F1B3F-03FA-048D-566F-652858B8B078">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:56:52 UTC</createdTime>
+<generatorID>68739856-F7B0-22E2-1B91-C80D7E88C5DA</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<referedAttribute>3E99C4D7-A052-1AA4-64C8-3D1C0806ED80</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_kataloga" id="3637A238-6B96-7610-5AE8-C6633E3F1FDD">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:07:39 UTC</createdTime>
+<generatorID>703E3A04-9685-540B-D288-2E716DBEE0C4</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<referedAttribute>155F8B16-7F22-0790-6C6A-11F915A8A096</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="CA89A629-F614-2F24-729C-1BAD9FDF2407" name="Primerak_Knjige PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:55:48 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>C927AFE2-765E-D073-6D45-7659E2DEFBEC</attributeRef>
+<attributeRef>FD375F34-D7CB-3683-1457-8C7D09E2585E</attributeRef>
+<attributeRef>D61F1B3F-03FA-048D-566F-652858B8B078</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

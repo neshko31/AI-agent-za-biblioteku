@@ -8,15 +8,8 @@ GoodReads dataset: https://cseweb.ucsd.edu/~jmcauley/datasets/goodreads.html
     - Meta-Data of Books: Detailed book graph
     - Meta-Data of Books: Detailed information of authors
     - Book Reviews: Complete book reviews
+GoodReads authors dataset: https://www.kaggle.com/datasets/choobani/goodread-authors
 """
-
-# IMPORTANT NOTICE: After running this script books with book_ids 14329911 (no image) and 20748091 (no e-text found) where deleted using 2 Claude generated scripts found in folder "generated scripts"
-
-# After running this file there should be 8101 book saved.
-# After finding books in files that say "has_image":false manually, there should be only one book without an image.
-# After running the script to check which book has no e-text, there should be only one book without it.
-# After running the script for deleting books twice (once for each of those books with their respected book_id), there should be 8099 books in the dataset.
-# At last, the ebook for book_id 14329911 should be manually deleted (etext is 3470).
 
 import pandas as pd
 import gzip, json
@@ -36,9 +29,12 @@ import shutil
 # --- 1. Load Project Gutenberg metadata ---
 #
 #
-print("\n[1/6] Loading Project Gutenberg metadata...")
+
+print("\n[1/7] Loading Project Gutenberg metadata...")
 books_pg_df = pd.read_csv("data/project_gutenberg/gutenberg_metadata.csv")
 print(f"      Number of rows in CSV: {len(books_pg_df)}")
+
+books_pg_df["Title"] = books_pg_df["Title"].astype(str).str.replace("\n", " ", regex=False)
 
 books_pg = (
     books_pg_df
@@ -50,6 +46,16 @@ books_pg = (
 )
 print(f"      After dropping irellevant rows and columns: {len(books_pg)} books")
 
+# Only keeps the books where the etext file actually exists.
+books_texts_dir = Path("./data/project_gutenberg/books")
+available_etext_numbers = { p.name for p in books_texts_dir.iterdir() if p.is_file() }
+
+books_pg["Etext Number"] = books_pg["Etext Number"].astype(str)
+before_text_filter = len(books_pg)
+books_pg = books_pg[books_pg["Etext Number"].isin(available_etext_numbers)].reset_index(drop = True)
+
+print(f"      Dropped {before_text_filter - len(books_pg)} books with no matching e-text file, {len(books_pg)} remain")
+
 valid_book_titles = set(books_pg["Title"].astype(str))
 
 #
@@ -57,7 +63,7 @@ valid_book_titles = set(books_pg["Title"].astype(str))
 # --- 2. Load GoodReads books metadata ---
 #
 #
-print("\n[2/6] Streaming GoodReads books metadata...")
+print("\n[2/7] Streaming GoodReads books metadata...")
 
 books_goodreads = []
 
@@ -95,7 +101,7 @@ books_gr = (
 #
 # --- 3.1. Merging the 2 dataframes for Project Gutenberg and GoodReads into one ---
 #
-print(f"\n[3.1/6] Merging GoodReads and Project Gutenberg datasets by title...")
+print(f"\n[3.1/7] Merging GoodReads and Project Gutenberg datasets by title...")
 books_pg = books_pg.rename(columns={"Title": "title", "Etext Number": "etext_number", "EPUB3 (E-readers incl. Send-to-Kindle)": "epub3", "EPUB (older E-readers)": "epub_older", "EPUB (no images, older E-readers)": "epub_no_images"})
 
 merged_books_df = pd.merge(books_pg, books_gr, on="title", how="inner", validate="one_to_one")
@@ -104,7 +110,7 @@ print(f"    Datasets have been merged: {merged_books_df.shape}")
 #
 # --- 3.2. Downloading cover images for those merged books ---
 #
-# SPORO JE, OKO 2 KNJIGE PO SEKUNDI PA JE PREKINUTO
+# It downloads around 2 book covers per second
 
 def fetch_image_bytes(url: str):
     try:
@@ -127,12 +133,19 @@ def fetch_images_with_progress(df: pd.DataFrame) -> pd.Series:
     return pd.Series(results, index=df.index)
 
 
-print(f"\n[3.2/6] Downloading cover images for {len(merged_books_df)} books...")
+print(f"\n[3.2/7] Downloading cover images for {len(merged_books_df)} books...")
+
 merged_books_df["image_base64"] = fetch_images_with_progress(merged_books_df)
 merged_books_df["has_image"]   = merged_books_df["image_base64"].notna()
 
 ok_count = merged_books_df["has_image"].sum()
 print(f"      Completed: {ok_count}/{len(merged_books_df)}")
+
+# Books without a succesfully downloaded cover image are dropped.
+before_image_filter = len(merged_books_df)
+merged_books_df = merged_books_df[merged_books_df["has_image"]].reset_index(drop=True) 
+
+print(f"    Dropped {before_image_filter - len(merged_books_df)} books with no cover image, {len(merged_books_df)} remain.")
 
 #
 # --- 3.3. Merging books with their Main Authors (used for vector DB) ---
@@ -141,7 +154,7 @@ print(f"      Completed: {ok_count}/{len(merged_books_df)}")
 # First, we just get the book title and list of authors.
 # Next, we create another df where a book will be found exactly many times as the number of authors.
 # After all of that, we get a df that can be merged with the other one.
-print(f"\n[3.3/6] Merging books with their Main Authors (useful for vector DB)...")
+print(f"\n[3.3/7] Merging books with their Main Authors (useful for vector DB)...")
 
 temp_df = merged_books_df.loc[:, ["title", "authors"]]
 
@@ -193,7 +206,7 @@ print(f"    Main Authors have been added for each book for vector DB: {books_vec
 #
 # --- 3.4. Merging books with their Authors and Genres (used for elasticsearch and relational DB) ---
 #
-print(f"\n[3.4/6] Merging books with their authors and genres (useful for elasticsearch and relational DB)...")
+print(f"\n[3.4/7] Merging books with their authors and genres (useful for elasticsearch and relational DB)...")
 # Authors
 def add_author_names(authors_list):
     enriched = []
@@ -254,10 +267,56 @@ print(f"    Genres have been added for each book for elasticsearch and relationa
 
 #
 #
-# --- 4. Reviews ---
+# --- 4. Authors ---
 #
 #
-print("\n[4/6] Streaming GoodReads reviews metadata...")
+print("\n[4/7] Streaming GoodReads authors metadata from extended dataset...")
+
+authors_extra_df = pd.read_csv("./data/final_dataset.csv")
+authors_extra_df = authors_extra_df.rename(columns={"authorid": "author_id"})
+authors_extra_df["author_id"] = authors_extra_df["author_id"].astype(str).str.strip()
+
+authors_extra_df["about"] = (
+    authors_extra_df["about"]
+    .fillna("")
+    .astype(str)
+    .str.replace(r"<[^>]+>", "", regex=True)
+)
+
+authors_extra_df = authors_extra_df[["author_id", "name", "image_url", "about", "born", "died"]]
+
+book_author_ids = set(
+    books_elastic_relationaldb_df["authors_enriched"]
+    .explode()
+    .dropna()
+    .apply(lambda a: str(a.get("author_id", "")).strip() if isinstance(a, dict) else None)
+    .dropna()
+)
+book_author_ids.discard("")
+
+authors_final_df = pd.DataFrame({"author_id": sorted(book_author_ids)})
+authors_final_df = pd.merge(authors_final_df, authors_extra_df, on="author_id", how="left")
+
+print(f"    Authors appearing in books: {len(authors_final_df)} | matched in prior dataset: {authors_final_df['name'].notna().sum()}")
+
+before_fallback_na = authors_final_df["name"].isna().sum()
+# Fallback: for authors missing a name from the extended dataset (final_dataset.csv),
+# use the name already resolved from the GoodReads authors dataset (author_id_to_name,
+# built in step 3.3) instead of leaving it null.
+missing_name_mask = authors_final_df["name"].isna() | (authors_final_df["name"].astype(str).str.strip() == "")
+authors_final_df.loc[missing_name_mask, "name"] = (
+    authors_final_df.loc[missing_name_mask, "author_id"].map(author_id_to_name)
+)
+after_fallback_na = authors_final_df["name"].isna().sum()
+
+print(f"    Filled {before_fallback_na - after_fallback_na} missing names via GoodReads authors fallback, {after_fallback_na} still null")
+
+#
+#
+# --- 5. Reviews ---
+#
+#
+print("\n[5/7] Streaming GoodReads reviews metadata...")
 
 valid_ids = set(books_vectordb_df["book_id"].astype(str))
 
@@ -324,10 +383,10 @@ print(f"      Done — reviews from GoodReads after filtering by book_id: {len(r
 
 #
 #
-# --- 5. Saving ---
+# --- 6. Saving ---
 #
 #
-print("\n[5/6] Saving dataframes into files...")
+print("\n[6/7] Saving dataframes into files...")
 
 print("     Saving books into PARQUET file for vector DB.")
 books_vectordb_final = books_vectordb_df[[
@@ -375,6 +434,14 @@ genre_expanded_relationaldb_final.to_json(
     force_ascii=False
 )
 
+print("     Saving authors into JSON file for relational DB.")
+authors_final_df.to_json(
+    "../data/authors.jsonl",
+    orient="records",
+    lines=True,
+    force_ascii=False
+)
+
 print("     Saving reviews into PARQUET file for all DBs.")
 reviews_final = reviews_gr[[
     "user_id", "book_id", "review_id", "rating",
@@ -385,10 +452,10 @@ reviews_final.to_parquet("../data/reviews.parquet", index=False)
 
 #
 #
-# --- 6. Extracting needed text documents for books ---
+# --- 7. Extracting needed text documents for books ---
 #
 #
-print("\n[6/6] Copying text documents for books...")
+print("\n[7/7] Copying text documents for books...")
 
 def copy_files_by_rule(src_dir: str, dst_dir: str):
     source = Path(src_dir)

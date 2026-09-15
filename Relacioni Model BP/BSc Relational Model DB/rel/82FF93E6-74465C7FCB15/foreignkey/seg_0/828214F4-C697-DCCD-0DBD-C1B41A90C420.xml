@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="828214F4-C697-DCCD-0DBD-C1B41A90C420" containerWithKeyObject="D339ABEC-5D6F-C818-EA99-3580248EF995" localFKIndex="4AEA59E9-CD23-56E6-7076-81322E8C380D" name="je_napisao_Autor_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>8E9C3861-4660-4B21-B2C2-D221EC6BBD4F</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<referredTableLongName>Autor</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C2DF26D2-F0EE-B44E-6117-C784EE9231E8</referredTableID>
+<keyObject>27E56F06-261E-522D-050F-A7D53982EFD0</keyObject>
+<referredKeyID>27E56F06-261E-522D-050F-A7D53982EFD0</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_autora</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

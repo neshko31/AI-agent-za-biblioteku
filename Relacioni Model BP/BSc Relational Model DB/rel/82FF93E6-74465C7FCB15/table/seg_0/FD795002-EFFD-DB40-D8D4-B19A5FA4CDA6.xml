@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FD795002-EFFD-DB40-D8D4-B19A5FA4CDA6" name="Administrator">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>2EC8531E-8DE3-1D1E-717E-908C081F387B</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_korisnika" id="181074CA-F6D3-9229-43FB-B423F7FC3923">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>CE575283-3413-B11E-2986-6F7ECABB3363</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6889E621-85FC-33D4-7D60-772CE423BF56" referredColumn="2024DDC7-BA83-F31E-66C3-920685D3FCBD"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F5A427B2-7FA1-43C5-3345-008044FBDE3F" name="Administrator_PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>72928937-F71D-5D03-701C-2F86A3FCE82B</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="181074CA-F6D3-9229-43FB-B423F7FC3923"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="48CAC679-2F1E-6E6C-FEDA-D1C6D74850CC" name="Administrator_Korisnik_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>0C50B839-24E5-B5E1-F4A1-CDE1FC8365FD</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="181074CA-F6D3-9229-43FB-B423F7FC3923"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

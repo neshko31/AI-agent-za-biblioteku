@@ -6,7 +6,7 @@
 <engineerTo>
 <item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
 </engineerTo>
-<sourcePk>72928937-F71D-5D03-701C-2F86A3FCE82B</sourcePk>
+<sourcePk>2B8EC8BD-0DC2-B057-0FE2-23C5B28857D2</sourcePk>
 <identifying>false</identifying>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
@@ -27,10 +27,8 @@
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
-<dataTypePrecision>6</dataTypePrecision>
-<dataTypeScale>0</dataTypeScale>
-<ownDataTypeParameters>,6,0</ownDataTypeParameters>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </attribute>
 <attribute name="ocena_čet_poruke" id="AE2FA100-BCA5-18B6-3F8B-337AC862252D">
 <createdBy>necal</createdBy>

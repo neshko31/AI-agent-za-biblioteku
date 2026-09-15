@@ -1,0 +1,34 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="je_napisao" directorySegmentName="seg_0" id="8E9C3861-4660-4B21-B2C2-D221EC6BBD4F">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:11:21 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>A6DA4261-3875-279F-4225-473B0E6248EA</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F928360F-E6F5-7F67-4880-0395FBEE5737</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<attribute name="uloga_autora" id="D0453B65-7B7B-8E00-6E4D-FED31545170B">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:11:44 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+</attribute>
+</attributes>
+</Relation>

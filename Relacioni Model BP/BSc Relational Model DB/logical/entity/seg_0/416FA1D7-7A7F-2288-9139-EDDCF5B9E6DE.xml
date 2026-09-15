@@ -1,0 +1,109 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="416FA1D7-7A7F-2288-9139-EDDCF5B9E6DE" name="e-Knjiga">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:14:38 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_eknjige" id="EC49AB83-46EC-B59F-80A8-1497897046A2">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:14:46 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="putanja_eknjige" id="8728919E-87D5-AF18-69D3-2654BDE600DD">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:14:53 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="datum_dodavanja_eknjige" id="906112A5-D211-56E4-960D-ACF58F36408E">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:15:08 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="format_eknjige" id="936C59F0-EB32-DAF0-9BBE-5C25A650DC2A">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:15:22 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>190A7916-C033-187C-24B5-25CAAAB77A29</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="broj_strana_eknjige" id="89B563C9-6459-E93B-B030-ABC3E516DB23">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:15:38 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_knjige" id="FBDBDCBF-FF71-8D52-1457-E5BC3121DE41">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:16:39 UTC</createdTime>
+<generatorID>11CEB554-1BB2-DCE0-DBBB-9E1C958A4DBB</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<referedAttribute>3E99C4D7-A052-1AA4-64C8-3D1C0806ED80</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B971C1E5-9B53-10B4-C004-CA202AF1B56E" name="e-Knjiga PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:14:53 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>EC49AB83-46EC-B59F-80A8-1497897046A2</attributeRef>
+<attributeRef>FBDBDCBF-FF71-8D52-1457-E5BC3121DE41</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

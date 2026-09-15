@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="omogućava" directorySegmentName="seg_0" id="5BC3C4CD-5400-E60D-8DBC-412E2918C0A7">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:32:04 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<sourcePk>6EA7DA78-C8FF-2CF0-A7C1-9F528F0D5E1B</sourcePk>
+<targetPk>72928937-F71D-5D03-701C-2F86A3FCE82B</targetPk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>CD3B0577-1994-1BB2-8654-BD30FE9C70C2</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>05DFD529-B375-CFC0-0BB1-DA75D9923420</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

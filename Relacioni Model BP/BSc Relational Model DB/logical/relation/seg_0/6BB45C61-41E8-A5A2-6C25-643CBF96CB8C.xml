@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="ispunjava_se" directorySegmentName="seg_0" id="6BB45C61-41E8-A5A2-6C25-643CBF96CB8C">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:26:44 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<sourcePk>34843036-5BD8-6685-D18A-DA2615E72700</sourcePk>
+<targetPk>72C4F835-A982-CEFF-483A-AAF909238608</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>3E33913E-6874-0A86-8498-6B05677C522B</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>15FC93E0-9434-D68C-1942-AE512F90CA67</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

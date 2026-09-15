@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7A2C6AAE-B1A7-78F4-C7DC-A07CF3B4349C" name="spada_u">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Knjiga_id_knjige" id="C75468C1-DBBE-C233-49A3-3454FE2636C9">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="180AD292-D72F-EF91-CAA9-FBBC86C8E7B3" referredColumn="18FD05FA-C95F-E224-CFDA-FD460B5DF89A"/>
+</associations>
+</Column>
+<Column name="Žanr_id_žanra" id="CFCCCA8E-1CC4-AABE-1994-F8103E99272C">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D64110E7-D2CD-8356-083B-3833A23E1CC2" referredColumn="B2EE2B22-3E85-E8EA-2462-8E6CDD8267FF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7DA8CE3E-0D68-A46E-90D1-0749BE13DC72" name="spada_u_PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C75468C1-DBBE-C233-49A3-3454FE2636C9"/>
+<colUsage columnID="CFCCCA8E-1CC4-AABE-1994-F8103E99272C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DA8794CF-79FB-116B-C669-563FBC723154" name="spada_u_Knjiga_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>1FB05286-BEF4-DD5F-AE7E-7A821DC44C15</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C75468C1-DBBE-C233-49A3-3454FE2636C9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4024286B-760A-12F8-E579-FABDDA17E222" name="spada_u_Žanr_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>1FB05286-BEF4-DD5F-AE7E-7A821DC44C15</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CFCCCA8E-1CC4-AABE-1994-F8103E99272C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

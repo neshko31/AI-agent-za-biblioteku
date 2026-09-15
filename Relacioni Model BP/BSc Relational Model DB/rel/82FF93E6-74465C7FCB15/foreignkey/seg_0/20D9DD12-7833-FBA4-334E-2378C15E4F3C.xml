@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="20D9DD12-7833-FBA4-334E-2378C15E4F3C" containerWithKeyObject="AD344685-515F-331E-5BFF-1E74DB059F73" localFKIndex="23A7182B-240C-58E4-7A78-6F9A8AA76987" name="lajkuje_Recenzija_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:37:09 UTC</createdTime>
+<generatorID>67D85B4F-17B2-BA8F-16D3-0D443B8ABC46</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<referredTableLongName>Recenzija</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2C319E94-209E-E64B-7DFD-165BA96D0933</referredTableID>
+<keyObject>95FD7E1A-484F-10E2-3349-9387A62FF5C3</keyObject>
+<referredKeyID>95FD7E1A-484F-10E2-3349-9387A62FF5C3</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Knjiga_id_knjige</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

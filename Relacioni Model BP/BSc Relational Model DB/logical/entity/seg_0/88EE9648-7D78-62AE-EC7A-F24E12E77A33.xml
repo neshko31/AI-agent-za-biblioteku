@@ -49,9 +49,8 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
-<dataTypePrecision>0</dataTypePrecision>
-<ownDataTypeParameters>,0,</ownDataTypeParameters>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="datum_aktivnosti_čet_sesije" id="DE5CC2EF-0640-7EA8-58A6-5F091C56E1EA">
 <createdBy>necal</createdBy>
@@ -62,9 +61,8 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
-<dataTypePrecision>0</dataTypePrecision>
-<ownDataTypeParameters>,0,</ownDataTypeParameters>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="sažetak_akitvnosti_čet_sesije" id="A0EE65F2-4392-E4B7-3727-99C866319603">
 <createdBy>necal</createdBy>

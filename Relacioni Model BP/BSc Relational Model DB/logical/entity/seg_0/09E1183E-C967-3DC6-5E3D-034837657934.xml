@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="09E1183E-C967-3DC6-5E3D-034837657934" name="Odgovor">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:00:48 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_odgovora" id="6125EFD1-E292-7F5E-EC43-F3DD5F6C3F32">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:00:57 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tekst_odgovora" id="90D1632E-8826-1F82-1A38-21F169F9B651">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:01:07 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="datum_kreiranja_odgovora" id="572BFA36-1E32-DF21-52F4-9662C8BF4D81">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:01:52 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_knjige" id="DCA4367B-4EC4-0D6C-ED73-E9F1CFCB6D21">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:06:26 UTC</createdTime>
+<generatorID>895E4EB6-B8CC-0539-21A5-DC42E14288BB</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<referedAttribute>E4E75BFB-BEA3-0F18-BEC5-B06A621BFB5B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7D82CADC-70A7-AB68-C4D1-3E7023DEDA62" name="Odgovor PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 19:01:08 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6125EFD1-E292-7F5E-EC43-F3DD5F6C3F32</attributeRef>
+<attributeRef>DCA4367B-4EC4-0D6C-ED73-E9F1CFCB6D21</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
