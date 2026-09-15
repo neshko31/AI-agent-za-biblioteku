@@ -1,0 +1,167 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="63156F6A-7AA7-85F0-7E1E-80D6D7E0A432" name="Korisnik">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:06:48 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<discriminatorAttributeID>3E496A6C-81B1-29EC-DFC9-6ACA78743D2F</discriminatorAttributeID>
+<discriminatorColumnName>uloga_korisnika</discriminatorColumnName>
+<completeSubtypes>true</completeSubtypes>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_korisnika" id="CE575283-3413-B11E-2986-6F7ECABB3363">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:32:13 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ime_korisnika" id="E6800E60-CC0A-8EE5-9B2D-1A33943A97C8">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:32:47 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="prezime_korisnika" id="60B47A31-F3CB-480D-7EB1-D58E58795410">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:33:09 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="putanja_profilne_korisnika" id="2BDF15AB-3145-A0F5-51F7-156DF7299A5E">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:33:37 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="uloga_korisnika" id="3E496A6C-81B1-29EC-DFC9-6ACA78743D2F">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:34:28 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>D4473806-1794-4999-9571-C23B70CE7D23</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="datum_rođenja_korisnika" id="9E6DB0FC-AF18-1016-668C-F0C8BC3BDD18">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:34:41 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="šifra_korisnika" id="E9FD44DE-DC88-561E-4A69-A4DF09AEAEE4">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:37:07 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email_korisnika" id="3FC5CB54-4D6F-062F-2067-0364688881E8">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:37:32 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="broj_telefona_korisnika" id="B27AEEA1-8792-A10A-6B50-65392793F662">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:37:45 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16</dataTypeSize>
+<ownDataTypeParameters>16,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_adrese" id="94F2E4AB-18C0-ACA2-0D74-1DD209E72748">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:19:45 UTC</createdTime>
+<generatorID>36F90626-A640-CBCD-DD44-CA37F0500270</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<referedAttribute>E012C29F-FDE3-6724-2671-4CAEA88CC614</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="72928937-F71D-5D03-701C-2F86A3FCE82B" name="Korisnik PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:32:33 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>CE575283-3413-B11E-2986-6F7ECABB3363</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

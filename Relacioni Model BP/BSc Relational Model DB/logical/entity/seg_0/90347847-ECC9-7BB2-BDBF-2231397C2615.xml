@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="90347847-ECC9-7BB2-BDBF-2231397C2615" name="Biblioteka">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:34:57 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_biblioteke" id="DECAC85C-72AE-8382-5E6A-9378491ED936">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:25:12 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="naziv_biblioteke" id="7914FE92-6CC1-BCFE-8862-849313ED7D78">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:25:29 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="žiro_račun_biblioteke" id="E99BDE01-6DA5-C725-0069-5F69F74F2829">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:25:43 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_adrese" id="A01D0B3A-CCDC-2437-1977-692D7638511C">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:30:43 UTC</createdTime>
+<generatorID>F29F9153-90AB-0CE0-347F-11E2FFA018E4</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<referedAttribute>E012C29F-FDE3-6724-2671-4CAEA88CC614</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_korisnika" id="BE321480-9497-CB98-E83A-BF378C7A1632">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:34:34 UTC</createdTime>
+<generatorID>18CE1466-FA87-1A10-2FB5-C421FF2857F0</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>CE575283-3413-B11E-2986-6F7ECABB3363</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A43103A1-C41C-05CD-0157-032C4B4F7180" name="Biblioteka PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:25:22 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>DECAC85C-72AE-8382-5E6A-9378491ED936</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,34 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="05DFD529-B375-CFC0-0BB1-DA75D9923420" name="Bibliotekar">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:23:31 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<hierarchicalParent>63156F6A-7AA7-85F0-7E1E-80D6D7E0A432</hierarchicalParent>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_biblioteke" id="2BC424BF-3187-6D35-7FF4-03DD8047BADD">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:39:11 UTC</createdTime>
+<generatorID>70C1DF9D-00C3-488D-F39F-5FE5CD5DE1B3</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<referedAttribute>DECAC85C-72AE-8382-5E6A-9378491ED936</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

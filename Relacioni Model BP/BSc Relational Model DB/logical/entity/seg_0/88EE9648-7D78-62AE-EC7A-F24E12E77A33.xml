@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="88EE9648-7D78-62AE-EC7A-F24E12E77A33" name="Čet_Sesija">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:24:17 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_čet_sesije" id="B35AA0AD-3E7B-62BC-E817-9F436A3473C8">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:24:51 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="naslov_čet_sesije" id="266E385D-DF29-2A9F-82EF-1A6BE80C24B6">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:25:09 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="datum_kreiranja_čet_sesije" id="A57362C1-7804-F6D1-35D5-A2DF416815A1">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:25:24 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<ownDataTypeParameters>,0,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="datum_aktivnosti_čet_sesije" id="DE5CC2EF-0640-7EA8-58A6-5F091C56E1EA">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:25:45 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>91229484-D19C-D458-8647-333C7FFE7B60</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<ownDataTypeParameters>,0,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="sažetak_akitvnosti_čet_sesije" id="A0EE65F2-4392-E4B7-3727-99C866319603">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:26:55 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="arhivirana_čet_sesija" id="81C77D41-3A07-CE19-28BA-06DA9AF9801B">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:27:16 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="obrisana_čet_sesija" id="8A9DCE38-D1BF-1027-45D5-0AD5885D6698">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:27:33 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_korisnika" id="B4A0A419-880A-CBED-D1BE-9E7B9536C614">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:28:39 UTC</createdTime>
+<generatorID>053A0E40-F993-BBC3-63AF-BF53D0D44CDD</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<referedAttribute>CE575283-3413-B11E-2986-6F7ECABB3363</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="852EC7E2-6D4C-0C9A-2500-F4A6DBB4EDD8" name="Čet_Sesija PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 16:24:58 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B35AA0AD-3E7B-62BC-E817-9F436A3473C8</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

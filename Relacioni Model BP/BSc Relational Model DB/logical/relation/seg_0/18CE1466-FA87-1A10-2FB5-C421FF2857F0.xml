@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="vodi" directorySegmentName="seg_0" id="18CE1466-FA87-1A10-2FB5-C421FF2857F0">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 17:31:44 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<sourcePk>72928937-F71D-5D03-701C-2F86A3FCE82B</sourcePk>
+<targetPk>A43103A1-C41C-05CD-0157-032C4B4F7180</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>C1570989-95B5-CFEC-E148-A17570197303</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>90347847-ECC9-7BB2-BDBF-2231397C2615</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="BSc Relational Model DB" id="2B09311C-2DBB-BB95-E8ED-2FB66D309803" version="3.5">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:05:50 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>2B09311C-2DBB-BB95-E8ED-2FB66D309803</designId>
+</OSDM_Design>

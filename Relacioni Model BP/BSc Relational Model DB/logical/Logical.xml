@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="C490F1B3-7EE9-0152-807F-DF7EF6F92230" mainViewID="855C464A-162B-5A1A-B008-5623C378372E">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-15 15:05:50 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
