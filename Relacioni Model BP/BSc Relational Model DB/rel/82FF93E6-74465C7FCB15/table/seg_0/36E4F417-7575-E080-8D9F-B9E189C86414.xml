@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="36E4F417-7575-E080-8D9F-B9E189C86414" name="Knjiga">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>A6DA4261-3875-279F-4225-473B0E6248EA</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_knjige" id="717E92E4-6C09-0570-E9F1-927EA2EDFA21">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>3E99C4D7-A052-1AA4-64C8-3D1C0806ED80</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="putanja_naslovne_knjige" id="2098CA33-087A-F62A-5849-1D4EBD7F84C2">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>6D4DE4AD-D0AE-1A9C-AF28-329693E885B9</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>256</dataTypeSize>
+<ownDataTypeParameters>256,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="obrisana_knjiga" id="6ACFFBE9-DC8A-BC86-9709-B99BA54A42C2">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>964BBE0B-E613-2240-CFE8-4050670626DD</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="isbn13_knjige" id="EB4587B3-C11C-6C8F-6F7B-EF040F1E65BF">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>8D30C68A-93B2-A672-E991-B8280FA4AAAB</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="naslov_knjige" id="7D6410A8-C7C2-B7A3-6D68-04FB5C5B57AB">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>6C992043-683F-E2AA-EB32-1FCCAFA3635F</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sinopsis_knjige" id="E458B5DD-E578-C028-0A3E-1F150D5465C3">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>8148FA2C-C9AC-1ACD-8114-25652B90D689</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6FDE5B4D-9463-A928-58EF-8C66C169AB69" name="Knjiga_PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>BCD29E9E-7B3A-BB3B-6CC2-A9953348848A</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="717E92E4-6C09-0570-E9F1-927EA2EDFA21"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

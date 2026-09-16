@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A051C181-8C2E-6BFB-CB2C-84AA34CB2005" containerWithKeyObject="35A29F46-336E-8F7E-AAFD-CA5A5BB2B5EF" localFKIndex="BB345830-BA44-2775-62C2-B94389965282" name="Biblioteka_Menadžer_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>18CE1466-FA87-1A10-2FB5-C421FF2857F0</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<referredTableLongName>Menadžer</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7D26872E-D727-C924-8E9F-DD11B300FEE7</referredTableID>
+<keyObject>0B98D119-89DA-0640-F368-661EF2F85A25</keyObject>
+<referredKeyID>0B98D119-89DA-0640-F368-661EF2F85A25</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id_korisnika</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

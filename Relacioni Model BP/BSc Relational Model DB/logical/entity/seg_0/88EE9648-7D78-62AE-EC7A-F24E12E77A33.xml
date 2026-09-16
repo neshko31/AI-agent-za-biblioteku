@@ -117,14 +117,29 @@
 <logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_korisnika1" id="06CC6A5C-B41A-412B-37DB-6D9CF6060515">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:01:04 UTC</createdTime>
+<generatorID>CD3BDA2D-28B5-C833-A5F5-38F02C9B249B</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<referedAttribute>CE575283-3413-B11E-2986-6F7ECABB3363</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="852EC7E2-6D4C-0C9A-2500-F4A6DBB4EDD8" name="Čet_Sesija PK">
 <createdBy>necal</createdBy>
 <createdTime>2026-09-15 16:24:58 UTC</createdTime>
 <ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

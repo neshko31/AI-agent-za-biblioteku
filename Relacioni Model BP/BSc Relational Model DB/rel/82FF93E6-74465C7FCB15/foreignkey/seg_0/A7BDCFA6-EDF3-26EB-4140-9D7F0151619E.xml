@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A7BDCFA6-EDF3-26EB-4140-9D7F0151619E" containerWithKeyObject="641B4CD5-B3E2-01D6-06F3-E9A37BDB559D" localFKIndex="5D060F65-79C6-78B6-60AD-43093B6D94DB" name="Bibliotekar_Korisnik_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>4480F68F-5EAF-E31B-5851-21047E37C9EF</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<referredTableLongName>Korisnik</referredTableLongName>
+<arc>2C491189-0268-B0E4-186B-2640A7CC83AD</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7CFB44C9-981B-5516-2EB1-BC5EDD2D9B16</referredTableID>
+<keyObject>27C04F3F-11FF-90FB-8B83-C115D6636770</keyObject>
+<referredKeyID>27C04F3F-11FF-90FB-8B83-C115D6636770</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_korisnika</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>Bibliotekar</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

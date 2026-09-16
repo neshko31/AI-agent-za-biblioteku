@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9661F2C1-198B-D10F-A370-7FB62D4F7F68" name="Katalog">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>81C0DD01-0BFD-CFF3-89D2-E0256A28BB1C</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_kataloga" id="3B3DCC23-63A3-EFE6-C516-E639B226DCB5">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>155F8B16-7F22-0790-6C6A-11F915A8A096</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="naziv_kataloga" id="FD815C28-8F9E-27A8-875A-ACDF6FFBF024">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>FA2D34DC-CE17-9828-A315-3321E6AEB197</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="standard_kataloga" id="DFD6BE64-3968-21D0-9B86-5183CE552780">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>01D40912-C1B0-2179-71BC-D3C88003DE88</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>D7A31E5A-67CF-6139-B3A9-F21AB8BC1F30</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="obrisan_katalog" id="FA647D89-2247-C985-6D0A-EA3601C18B4C">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>65CD9828-A929-C8BB-FAA9-2CC69F639849</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Biblioteka_id_biblioteke" id="1D684AA8-8E7A-7930-7220-AB606D8A8E32">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>751DB4DA-5CE1-EBB8-0CCA-9377E38CAEB1</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="703413E3-A510-02C0-D7A9-0063300DDAD6" referredColumn="3BF95FF9-58EF-0720-8A6C-C4D6054FE8DE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FBA557AB-628C-95B1-02BE-71474ED71D6E" name="Katalog_PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>011BFE8D-0FD0-B54D-757B-59895B8DA48E</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3B3DCC23-63A3-EFE6-C516-E639B226DCB5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7179A538-35FD-CDA6-AFE2-8857FFF72F08" name="Katalog_Biblioteka_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>361277FF-7637-94B1-4298-690677E24714</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1D684AA8-8E7A-7930-7220-AB606D8A8E32"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

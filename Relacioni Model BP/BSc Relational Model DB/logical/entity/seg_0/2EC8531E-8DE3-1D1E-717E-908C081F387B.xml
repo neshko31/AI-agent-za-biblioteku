@@ -15,4 +15,5 @@
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
+<discriminatorValue>Administrator</discriminatorValue>
 </Entity>

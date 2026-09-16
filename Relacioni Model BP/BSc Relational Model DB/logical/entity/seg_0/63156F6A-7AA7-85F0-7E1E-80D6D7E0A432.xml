@@ -14,6 +14,7 @@
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
+<generateDiscrimColumn>true</generateDiscrimColumn>
 <discriminatorAttributeID>3E496A6C-81B1-29EC-DFC9-6ACA78743D2F</discriminatorAttributeID>
 <discriminatorColumnName>uloga_korisnika</discriminatorColumnName>
 <completeSubtypes>true</completeSubtypes>
@@ -155,8 +156,9 @@
 <createdBy>necal</createdBy>
 <createdTime>2026-09-15 15:32:33 UTC</createdTime>
 <ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

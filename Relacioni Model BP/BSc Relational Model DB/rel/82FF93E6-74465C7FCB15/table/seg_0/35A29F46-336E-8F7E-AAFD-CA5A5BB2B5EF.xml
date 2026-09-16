@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="35A29F46-336E-8F7E-AAFD-CA5A5BB2B5EF" name="Biblioteka">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>90347847-ECC9-7BB2-BDBF-2231397C2615</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_biblioteke" id="3BF95FF9-58EF-0720-8A6C-C4D6054FE8DE">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>DECAC85C-72AE-8382-5E6A-9378491ED936</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="naziv_biblioteke" id="F15A670D-2BE6-441F-FC0E-330F913351B0">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>7914FE92-6CC1-BCFE-8862-849313ED7D78</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="žiro_račun_biblioteke" id="1B6F16C4-BFFF-5B59-B36C-E8EB6028DBAF">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>E99BDE01-6DA5-C725-0069-5F69F74F2829</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Adresa_id_adrese" id="2FBB04F5-AEF9-9522-A4B6-51C1A5A5990B">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>A01D0B3A-CCDC-2437-1977-692D7638511C</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FF38B015-DF08-01C5-3CFD-D2BF6C1519A3" referredColumn="21AFC1F3-8F50-BA99-DB0E-BBFF445EDE19"/>
+</associations>
+</Column>
+<Column name="Menadžer_id_korisnika" id="EDB2EED2-377D-36B8-3288-6731361CE17A">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>BE321480-9497-CB98-E83A-BF378C7A1632</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A051C181-8C2E-6BFB-CB2C-84AA34CB2005" referredColumn="6E075879-2E4E-CAE4-B71B-36329C6AECED"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7EE91A67-EF8E-F73E-D6B4-73EE74A5C943" name="Biblioteka_PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>A43103A1-C41C-05CD-0157-032C4B4F7180</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3BF95FF9-58EF-0720-8A6C-C4D6054FE8DE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="27B2DB52-B91F-A885-B271-F8561A492715" name="Biblioteka__IDX">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>18CE1466-FA87-1A10-2FB5-C421FF2857F0</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="EDB2EED2-377D-36B8-3288-6731361CE17A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C7278E5D-F09D-FDA5-3A68-2464E61D16E9" name="Biblioteka_Adresa_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>F29F9153-90AB-0CE0-347F-11E2FFA018E4</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2FBB04F5-AEF9-9522-A4B6-51C1A5A5990B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BB345830-BA44-2775-62C2-B94389965282" name="Biblioteka_Menadžer_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>18CE1466-FA87-1A10-2FB5-C421FF2857F0</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EDB2EED2-377D-36B8-3288-6731361CE17A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

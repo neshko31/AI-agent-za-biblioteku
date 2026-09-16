@@ -15,6 +15,7 @@
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
+<discriminatorValue>Bibliotekar</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
 <Attribute name="id_biblioteke" id="2BC424BF-3187-6D35-7FF4-03DD8047BADD">
 <createdBy>necal</createdBy>

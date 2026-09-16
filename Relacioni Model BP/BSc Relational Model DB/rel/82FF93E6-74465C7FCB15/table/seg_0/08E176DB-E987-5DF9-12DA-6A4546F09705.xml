@@ -1,0 +1,222 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="08E176DB-E987-5DF9-12DA-6A4546F09705" name="Rezervacija">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>3E33913E-6874-0A86-8498-6B05677C522B</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_rezervacije" id="A8D22E06-7659-3EA0-2D97-4E44556E775E">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>D8507E7D-98ED-1D88-6ED2-90E443D1BBC1</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status_rezervacije" id="3C38A7A4-146D-6C6D-4304-BD092A675861">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>EE2F6EAC-04FF-54DD-700D-7D14D066B101</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>FEC3966C-CDED-9627-B4BD-6B0C903D8ABF</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="datum_rezervacije" id="0324D226-285F-80F4-F294-3E9052D49F93">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>04753041-7473-F92A-09F2-268C6CABE393</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rok_kupljenja_rezervacije" id="5B43ACDE-2BF7-F483-93D2-270338F53B17">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>E88A0BD7-D3E9-6D77-64A1-D73E26CBEA89</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="procena_ispunjenja_rezervacije" id="9E4BC1F0-3821-2EA7-4AD2-A2DB40F35ACE">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>37C99FE0-593A-B2C4-59FF-605085FE97B7</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="stvarno_ispunjenje_rezervacije" id="569D6CDE-EF15-A708-CD1A-374102E3C34E">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>19959E1A-0A88-201F-ADE3-8D1B1AB06381</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="kanal_rezervacije" id="CBEC52A7-7AD2-8A80-0618-FC62C6C755D0">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>4F35DBBB-7B90-E5E8-3521-622544646F62</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>A8F8FFD4-BFB2-56D6-C803-84579185FD79</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Pozajmica_id_pozajmice" id="04A4C995-26AA-B364-E6DF-4B5A31C6D04E">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>120EE111-D396-811D-CA94-0BCBED8D3BF2</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2317FFD0-590B-C934-EA9C-47FC0101F24D" referredColumn="6EEF48DE-DE38-58FF-C11D-3CEFF0F4833A"/>
+</associations>
+</Column>
+<Column name="Knjiga_id_knjige" id="C9598141-372B-8CE8-5FFA-FE901FF9A8BC">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>23997149-C918-B1BA-6692-F930BAC09E4A</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EF10972F-51CB-2FC3-BC93-BC757F98DE4F" referredColumn="717E92E4-6C09-0570-E9F1-927EA2EDFA21"/>
+</associations>
+</Column>
+<Column name="Biblioteka_id_biblioteke" id="09446860-C280-27CA-B3CB-AF52E1C9BABE">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>B4C58305-BA8D-250C-303D-C96822E8C7FD</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="461E0386-09A9-C7FF-4B2E-9B883AA0BE25" referredColumn="3BF95FF9-58EF-0720-8A6C-C4D6054FE8DE"/>
+</associations>
+</Column>
+<Column name="Član_Biblioteke_id_korisnika" id="0882A83B-349A-1668-6902-B191028CC7C6">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>56E47334-1B11-F745-F5C6-9F44F5B54BED</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B3899815-7D6F-3E74-F8EE-8B14BFB5778B" referredColumn="39DBE11A-B833-2BB8-62E7-59DA4D31B87E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A8EC0EC2-1522-F29A-3223-80FBD3854D1E" name="Rezervacija_PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>34843036-5BD8-6685-D18A-DA2615E72700</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A8D22E06-7659-3EA0-2D97-4E44556E775E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F124732F-7552-ABD7-7399-340A6D871366" name="Rezervacija__IDX">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>6BB45C61-41E8-A5A2-6C25-643CBF96CB8C</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="04A4C995-26AA-B364-E6DF-4B5A31C6D04E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B23F015F-C215-9AF6-B3CA-428992FFA9DB" name="Rezervacija_Pozajmica_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>6BB45C61-41E8-A5A2-6C25-643CBF96CB8C</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="04A4C995-26AA-B364-E6DF-4B5A31C6D04E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4FDA79B9-730F-AF16-78CD-1AA8148F4525" name="Rezervacija_Član_Biblioteke_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>91DE1F6E-561B-21F2-61CA-A75682CAA86A</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0882A83B-349A-1668-6902-B191028CC7C6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D5DAA432-3A84-24E2-9C35-4868F397DEDD" name="Rezervacija_Knjiga_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>02452C1A-55DA-981E-39A0-D5B7977C171C</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C9598141-372B-8CE8-5FFA-FE901FF9A8BC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="16DB2649-62C1-00B7-49A9-C3A37905B4EB" name="Rezervacija_Biblioteka_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>112B8EB3-E4BA-8F90-0A20-B2493C0D38F0</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="09446860-C280-27CA-B3CB-AF52E1C9BABE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

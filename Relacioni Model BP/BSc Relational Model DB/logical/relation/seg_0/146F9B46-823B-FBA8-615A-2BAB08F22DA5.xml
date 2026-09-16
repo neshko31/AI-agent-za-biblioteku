@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="je_odgovor" directorySegmentName="seg_0" id="146F9B46-823B-FBA8-615A-2BAB08F22DA5">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:37:56 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<engineerTo>
+<item key="82FF93E6-F8B9-F16D-F241-74465C7FCB15" value="true"/>
+</engineerTo>
+<sourcePk>1D2D88D0-8E67-62EF-9496-6D806EEF1AE9</sourcePk>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>BDE3E53B-33F1-8A65-27BF-6F9FF8943C67</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>09E1183E-C967-3DC6-5E3D-034837657934</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

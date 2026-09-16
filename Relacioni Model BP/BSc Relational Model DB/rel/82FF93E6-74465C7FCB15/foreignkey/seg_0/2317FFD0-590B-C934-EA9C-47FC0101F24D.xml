@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2317FFD0-590B-C934-EA9C-47FC0101F24D" containerWithKeyObject="08E176DB-E987-5DF9-12DA-6A4546F09705" localFKIndex="B23F015F-C215-9AF6-B3CA-428992FFA9DB" name="Rezervacija_Pozajmica_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>6BB45C61-41E8-A5A2-6C25-643CBF96CB8C</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<referredTableLongName>Pozajmica</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>14785C65-6D6E-3752-29D8-A4BB54AC3813</referredTableID>
+<keyObject>62E5EAE2-8A7B-975E-1137-671CDE1EE7AC</keyObject>
+<referredKeyID>62E5EAE2-8A7B-975E-1137-671CDE1EE7AC</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id_pozajmice</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7C61A736-D346-D14F-5C0E-5377290C63BD" name="Primerak_Knjige">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>0D315B32-CC30-2FFD-2DD5-C79CB9219132</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_primerka_knjige" id="22B726B7-5A8A-96EC-464C-5B55BA80CD8A">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>C927AFE2-765E-D073-6D45-7659E2DEFBEC</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="godina_izdanja_primerka_knjige" id="E5BAD072-5ECD-CB37-1D58-A2530DBFFEA7">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>FD375F34-D7CB-3683-1457-8C7D09E2585E</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Knjiga_id_knjige" id="BB2C03CF-DF75-2B12-E2CE-ACDE96174176">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>D61F1B3F-03FA-048D-566F-652858B8B078</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B86CEE2A-FF4E-24F6-41C9-263137AF63B2" referredColumn="717E92E4-6C09-0570-E9F1-927EA2EDFA21"/>
+</associations>
+</Column>
+<Column name="Katalog_id_kataloga" id="3C8A9F6E-9005-65A3-4191-99386FD0E9A1">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>3637A238-6B96-7610-5AE8-C6633E3F1FDD</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5A799287-3CD3-CF11-D839-4AEFFA2029E5" referredColumn="3B3DCC23-63A3-EFE6-C516-E639B226DCB5"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ED3B5466-E553-87A4-DD64-8E8BFFC15B10" name="Primerak_Knjige_PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:40:30 UTC</createdTime>
+<generatorID>CA89A629-F614-2F24-729C-1BAD9FDF2407</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22B726B7-5A8A-96EC-464C-5B55BA80CD8A"/>
+<colUsage columnID="E5BAD072-5ECD-CB37-1D58-A2530DBFFEA7"/>
+<colUsage columnID="BB2C03CF-DF75-2B12-E2CE-ACDE96174176"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1A4C4ED8-43A0-5238-6D1F-49FE80003CCE" name="Primerak_Knjige_Katalog_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>703E3A04-9685-540B-D288-2E716DBEE0C4</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3C8A9F6E-9005-65A3-4191-99386FD0E9A1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="18EEB329-4915-9AC2-FA26-B92C0A0308C3" name="Primerak_Knjige_Knjiga_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>68739856-F7B0-22E2-1B91-C80D7E88C5DA</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BB2C03CF-DF75-2B12-E2CE-ACDE96174176"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

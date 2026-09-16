@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E4DAD412-13F3-BD91-3210-7A6324733095" name="lajkuje">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Član_Biblioteke_id_korisnika" id="3BD91082-F0B1-54ED-819C-CCC1F39E4EB7">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ABAAC5CA-DE3E-4C77-BFFF-6A0549CCCA39" referredColumn="39DBE11A-B833-2BB8-62E7-59DA4D31B87E"/>
+</associations>
+</Column>
+<Column name="Recenzija_id_knjige" id="E93880D3-2FA7-2E9E-BDFD-F2EA5CCCF06E">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="87FCA1BC-226F-CF4B-2DA7-0E26FFBCFD5A" referredColumn="E613A239-8BCB-D19C-9C00-0AD7A53107DF"/>
+</associations>
+</Column>
+<Column name="Recenzija_id_korisnika" id="19B24036-234F-675B-5CBE-40281BAD3F4A">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="87FCA1BC-226F-CF4B-2DA7-0E26FFBCFD5A" referredColumn="CEFD310C-280E-9E79-EC0E-E411D8572973"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D572AC37-5184-42D9-0901-6C6B4A4B09A1" name="lajkuje_PK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3BD91082-F0B1-54ED-819C-CCC1F39E4EB7"/>
+<colUsage columnID="E93880D3-2FA7-2E9E-BDFD-F2EA5CCCF06E"/>
+<colUsage columnID="19B24036-234F-675B-5CBE-40281BAD3F4A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="88774B22-4AA3-FD54-79D5-A7E619432184" name="lajkuje_Član_Biblioteke_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>B74EA0B6-24D8-2F13-A8F2-8D1B1893AF56</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3BD91082-F0B1-54ED-819C-CCC1F39E4EB7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="01279642-1DDC-54CE-4B76-95EFA99A16E0" name="lajkuje_Recenzija_FK">
+<createdBy>necal</createdBy>
+<createdTime>2026-09-16 15:41:01 UTC</createdTime>
+<generatorID>B74EA0B6-24D8-2F13-A8F2-8D1B1893AF56</generatorID>
+<ownerDesignName>BSc Relational Model DB</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E93880D3-2FA7-2E9E-BDFD-F2EA5CCCF06E"/>
+<colUsage columnID="19B24036-234F-675B-5CBE-40281BAD3F4A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
