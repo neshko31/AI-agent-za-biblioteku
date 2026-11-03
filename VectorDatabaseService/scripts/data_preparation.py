@@ -23,6 +23,16 @@ from collections import defaultdict
 import numpy as np
 from pathlib import Path
 import shutil
+from rapidfuzz import fuzz
+import unicodedata
+import re
+
+# Book is kept only if its Project Gutenberg author is similar enough to a GoodReads author.
+AUTHOR_THRESHOLD = 85
+
+# Path for data saving
+dir_path = Path("../data/")
+dir_path.mkdir(parents=True, exist_ok=True)
 
 #
 #
@@ -41,7 +51,6 @@ books_pg = (
     .drop(["Read online (web)", "Kindle", "Kindle (E-readers incl. Send-to-Kindle)", "Kindle (no images, older E-readers)", "Plain Text UTF-8", "Download HTML(zip)", "Resource Description Framework (RDF)", "Other Links"], axis=1)
     .query("Type == 'Text'")
     .dropna(subset=["EPUB3 (E-readers incl. Send-to-Kindle)", "EPUB (older E-readers)", "EPUB (no images, older E-readers)"])
-    .drop_duplicates(subset="Title", keep="first")
     .reset_index(drop=True)
 )
 print(f"      After dropping irellevant rows and columns: {len(books_pg)} books")
@@ -60,10 +69,25 @@ valid_book_titles = set(books_pg["Title"].astype(str))
 
 #
 #
-# --- 2. Load GoodReads books metadata ---
+# --- 2. Load GoodReads books metadata and authors metadata ---
 #
 #
-print("\n[2/7] Streaming GoodReads books metadata...")
+print("\n[2/7] Streaming GoodReads books metadata and authors metadata...")
+
+print("    Streaming GoodReads authors metadata...")
+
+author_id_to_name = {}
+
+with gzip.open("data/goodreads_book_authors.json.gz", "rt") as f:
+    pbar = tqdm(f, desc="Rows reading", unit=" lines", miniters=100_000)
+    for line in pbar:
+        r = json.loads(line)
+        author_id = str(r.get("author_id", "")).strip()
+        author_name = str(r.get("name", "")).strip()
+        author_id_to_name[author_id] = author_name
+    pbar.close()
+
+print("    Streaming GoodReads books metadata...")
 
 books_goodreads = []
 
@@ -71,26 +95,22 @@ with gzip.open("data/goodreads_books.json.gz", "rt") as f:
     pbar = tqdm(f, desc="Rows reading", unit=" lines", miniters=100_000)
     for line in pbar:
         r = json.loads(line)
-
-        book_title = str(r.get("title", "")).strip()
-
-        if book_title in valid_book_titles and book_title:
+        book_title = str(r.get("title_without_series") or r.get("title") or "").strip()
+        if book_title and book_title in valid_book_titles:
+            r["title_key"] = book_title
+            r["author_names"] = [
+                author_id_to_name.get(str(a.get("author_id", "")).strip(), "")
+                for a in r.get("authors", []) if isinstance(a, dict)
+            ]
             books_goodreads.append(r)
-
     pbar.close()
 
 print(f"      Done — books from GoodReads after filtering by exact book title: {len(books_goodreads)}.")
 
+# Now, we will keep all candidates and choose the right one in step 3.1
 books_gr_all = pd.DataFrame(books_goodreads)
-
-# For each book title, we choose that one row with the biggest ratings_count
+books_gr_all["book_id"] = books_gr_all["book_id"].astype(str)
 books_gr_all["ratings_count"] = pd.to_numeric(books_gr_all["ratings_count"], errors="coerce").fillna(0)
-books_gr = (
-    books_gr_all
-    .sort_values("ratings_count", ascending=False)
-    .drop_duplicates(subset="title", keep="first")
-    .reset_index(drop=True)
-)
 
 #
 #
@@ -101,10 +121,72 @@ books_gr = (
 #
 # --- 3.1. Merging the 2 dataframes for Project Gutenberg and GoodReads into one ---
 #
-print(f"\n[3.1/7] Merging GoodReads and Project Gutenberg datasets by title...")
+print(f"\n[3.1/7] Merging GoodReads and Project Gutenberg datasets by title and author...")
 books_pg = books_pg.rename(columns={"Title": "title", "Etext Number": "etext_number", "EPUB3 (E-readers incl. Send-to-Kindle)": "epub3", "EPUB (older E-readers)": "epub_older", "EPUB (no images, older E-readers)": "epub_no_images"})
 
-merged_books_df = pd.merge(books_pg, books_gr, on="title", how="inner", validate="one_to_one")
+def clean_name(text: str) -> str:
+    """Lowercase, strip accents and punctuation, collapse whitespace."""
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(c for c in text if not unicodedata.combining(c)).casefold()
+    text = re.sub(r"['’`]", "", text)          # don't -> dont
+    text = text.replace("&", " and ")
+    return re.sub(r"[\W_]+", " ", text).strip()
+
+def pg_author_names(raw) -> list:
+    if not isinstance(raw, str):
+        return []
+    names = []
+    for chunk in raw.split(";"):
+        chunk = re.sub(r"\[[^\]]*\]|\([^)]*\)", " ", chunk) 
+        parts = [p.strip() for p in chunk.split(",") if p.strip() and not re.search(r"\d", p)]
+        if parts:
+            names.append(clean_name(f"{parts[1]} {parts[0]}" if len(parts) > 1 else parts[0]))
+    return [n for n in names if n]
+
+def author_score(pg_names: list, gr_names: list) -> float:
+    # Best similarity (0-100) between any Gutenberg author and any GoodReads author of the book.
+    if not pg_names or not gr_names:
+        return 0
+    return max(fuzz.token_set_ratio(a, b) for a in pg_names for b in gr_names)
+
+# GoodReads rows whose author matches the Gutenberg author are allowed to be merged.
+# 1) All pairs (Gutenberg book, GoodReads book) with the identical title. Many-to-many on purpose.
+candidates = pd.merge(books_pg, books_gr_all, left_on="title", right_on="title_key", how="inner", suffixes=("", "_goodreads"))
+
+# 2) Author score for every pair
+candidates["author_score"] = [
+    author_score(pg_author_names(pg_authors), [clean_name(n) for n in gr_names if n])
+    for pg_authors, gr_names in zip(candidates["Authors"], candidates["author_names"])
+]
+candidates_ok = candidates[candidates["author_score"] >= AUTHOR_THRESHOLD]
+
+# 3) Each Gutenberg book (etext_number) keeps one GoodReads edition: the one with the most ratings.
+# 4) Each GoodReads book (book_id) can appear only once. Gutenberg has several e-texts of the same work,
+#    so the one with the lowest etext number is kept.
+merged_books_df = (
+    candidates_ok
+    .sort_values("ratings_count", ascending=False)
+    .drop_duplicates(subset="etext_number", keep="first")
+    .sort_values("etext_number", key=lambda s: pd.to_numeric(s, errors="coerce"))
+    .drop_duplicates(subset="book_id", keep="first")
+    .reset_index(drop=True)
+)
+assert merged_books_df["etext_number"].is_unique and merged_books_df["book_id"].is_unique
+
+# Gutenberg books that have GoodReads books with the same title, but none with a matching author
+no_match = candidates[~candidates["etext_number"].isin(candidates_ok["etext_number"])]
+no_match = no_match.sort_values("author_score", ascending=False).drop_duplicates(subset="etext_number", keep="first")
+pd.DataFrame({
+    "etext_number": no_match["etext_number"],
+    "title": no_match["title"],
+    "pg_authors": no_match["Authors"],
+    "gr_authors": no_match["author_names"].map("; ".join),
+    "author_score": no_match["author_score"],
+}).to_csv("../data/matching_rejected_pairs.csv", index=False)
+
+print(f"    Title+author pairs: {len(candidates_ok)} of {len(candidates)} | "
+      f"Gutenberg books without author match: {len(no_match)} | merged books: {len(merged_books_df)}")
+
 print(f"    Datasets have been merged: {merged_books_df.shape}")
 
 #
@@ -135,8 +217,8 @@ def fetch_images_with_progress(df: pd.DataFrame) -> pd.Series:
 
 print(f"\n[3.2/7] Downloading cover images for {len(merged_books_df)} books...")
 
-merged_books_df["image_base64"] = fetch_images_with_progress(merged_books_df)
-merged_books_df["has_image"]   = merged_books_df["image_base64"].notna()
+merged_books_df["image_base64"] = None # fetch_images_with_progress(merged_books_df)
+merged_books_df["has_image"]   = merged_books_df["image_base64"].isna()
 
 ok_count = merged_books_df["has_image"].sum()
 print(f"      Completed: {ok_count}/{len(merged_books_df)}")
@@ -156,12 +238,12 @@ print(f"    Dropped {before_image_filter - len(merged_books_df)} books with no c
 # After all of that, we get a df that can be merged with the other one.
 print(f"\n[3.3/7] Merging books with their Main Authors (useful for vector DB)...")
 
-temp_df = merged_books_df.loc[:, ["title", "authors"]]
+temp_df = merged_books_df.loc[:, ["book_id", "authors"]]
 
 author_ids_df = temp_df.explode('authors').reset_index(drop = True)
 author_ids_df['author_id'] = author_ids_df['authors'].apply(lambda x: x['author_id'] if isinstance(x, dict) else None)
 author_ids_df['role'] = author_ids_df['authors'].apply(lambda x: x['role'] if isinstance(x, dict) else None)
-author_ids_df = author_ids_df[['title', 'author_id', 'role']]
+author_ids_df = author_ids_df[['book_id', 'author_id', 'role']]
 author_ids_df.loc[author_ids_df["role"] == '', 'role'] = 'Main Author'
 
 def priority(role):
@@ -176,28 +258,13 @@ author_ids_df['priority'] = author_ids_df['role'].apply(priority)
 
 author_ids_df = (
     author_ids_df
-    .sort_values(by=['title', 'priority'])
-    .drop_duplicates(subset="title", keep="first")
+    .sort_values(by=['book_id', 'priority'])
+    .drop_duplicates(subset="book_id", keep="first")
     .drop(columns='priority')
     .reset_index(drop=True)
 )
 
-books_vectordb_df = pd.merge(merged_books_df, author_ids_df, on="title", how="inner", validate="one_to_one")
-
-print("    Streaming GoodReads authors metadata...")
-
-authors_goodreads = []
-author_id_to_name = {}
-
-with gzip.open("data/goodreads_book_authors.json.gz", "rt") as f:
-    pbar = tqdm(f, desc="Rows reading", unit=" lines", miniters=100_000)
-    for line in pbar:
-        r = json.loads(line)
-        author_id = str(r.get("author_id", "")).strip()
-        author_name = str(r.get("name", "")).strip()
-        author_id_to_name[author_id] = author_name
-
-    pbar.close()
+books_vectordb_df = pd.merge(merged_books_df, author_ids_df, on="book_id", how="inner", validate="one_to_one")
 
 books_vectordb_df['author'] = books_vectordb_df['author_id'].map(author_id_to_name)
 
@@ -253,17 +320,27 @@ with gzip.open("data/goodreads_book_genres_initial.json.gz", "rt") as f:
 
     pbar.close()
 
+# For relational and elasticsearch DB
 books_elastic_relationaldb_df['genres'] = books_elastic_relationaldb_df['book_id'].astype(str).map(genre_book_id_to_genre)
 books_elastic_relationaldb_df['genres'] = books_elastic_relationaldb_df['genres'].apply(
     lambda x: x if isinstance(x, list) else []
 )
-
 books_elastic_relationaldb_df['genres_expanded'] = books_elastic_relationaldb_df['book_id'].astype(str).map(genre_book_id_to_genre_expanded)
 books_elastic_relationaldb_df['genres_expanded'] = books_elastic_relationaldb_df['genres_expanded'].apply(
     lambda x: x if isinstance(x, list) else []
 )
-
 print(f"    Genres have been added for each book for elasticsearch and relational DB: {books_elastic_relationaldb_df.shape}")
+
+# For vector DB
+books_vectordb_df['genres'] = books_vectordb_df['book_id'].astype(str).map(genre_book_id_to_genre_expanded)
+books_vectordb_df['genres'] = books_vectordb_df['genres'].apply(
+    lambda x: x if isinstance(x, list) else []
+)
+books_vectordb_df['genres_expanded'] = books_vectordb_df['book_id'].astype(str).map(genre_book_id_to_genre_expanded)
+books_vectordb_df['genres_expanded'] = books_vectordb_df['genres_expanded'].apply(
+    lambda x: x if isinstance(x, list) else []
+)
+print(f"    Genres have been added for each book for vector DB: {books_vectordb_df.shape}")
 
 #
 #
@@ -302,7 +379,7 @@ print(f"    Authors appearing in books: {len(authors_final_df)} | matched in pri
 before_fallback_na = authors_final_df["name"].isna().sum()
 # Fallback: for authors missing a name from the extended dataset (final_dataset.csv),
 # use the name already resolved from the GoodReads authors dataset (author_id_to_name,
-# built in step 3.3) instead of leaving it null.
+# built in step 2) instead of leaving it null.
 missing_name_mask = authors_final_df["name"].isna() | (authors_final_df["name"].astype(str).str.strip() == "")
 authors_final_df.loc[missing_name_mask, "name"] = (
     authors_final_df.loc[missing_name_mask, "author_id"].map(author_id_to_name)
@@ -355,7 +432,7 @@ with gzip.open("data/goodreads_reviews_dedup.json.gz", "rt") as f:
         if book_id in valid_ids:
             reviews_goodreads.append(r)
             review_counts[book_id] += 1
-            if r.get("rating", 0) > 2:
+            if r.get("rating", 0) > 3:
                 positive_counts[book_id] += 1
 
     pbar.close()
@@ -396,7 +473,8 @@ books_vectordb_final = books_vectordb_df[[
     "average_rating", "text_reviews_count", "url", "publication_day",
     "publication_month", "publication_year", "has_image", "etext_number",
     "epub3", "epub_older", "epub_no_images",
-    "liked_percent", "review_count", "positive_review_count"
+    "genres", "genres_expanded", "liked_percent", "review_count", 
+    "positive_review_count"
 ]]
 books_vectordb_final.to_parquet("../data/books_vectordb.parquet", index=False)
 
