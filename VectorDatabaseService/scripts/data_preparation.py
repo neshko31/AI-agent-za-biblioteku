@@ -10,6 +10,7 @@ GoodReads dataset: https://cseweb.ucsd.edu/~jmcauley/datasets/goodreads.html
     - Book Reviews: Complete book reviews
 GoodReads authors dataset: https://www.kaggle.com/datasets/choobani/goodread-authors
 """
+# pyarrow is also needed
 
 import pandas as pd
 import gzip, json
@@ -28,7 +29,7 @@ import unicodedata
 import re
 
 # Book is kept only if its Project Gutenberg author is similar enough to a GoodReads author.
-AUTHOR_THRESHOLD = 85
+AUTHOR_THRESHOLD = 80
 
 # Path for data saving
 dir_path = Path("../data/")
@@ -124,11 +125,11 @@ books_gr_all["ratings_count"] = pd.to_numeric(books_gr_all["ratings_count"], err
 print(f"\n[3.1/7] Merging GoodReads and Project Gutenberg datasets by title and author...")
 books_pg = books_pg.rename(columns={"Title": "title", "Etext Number": "etext_number", "EPUB3 (E-readers incl. Send-to-Kindle)": "epub3", "EPUB (older E-readers)": "epub_older", "EPUB (no images, older E-readers)": "epub_no_images"})
 
+# Helper functions used for name cleaning
 def clean_name(text: str) -> str:
-    """Lowercase, strip accents and punctuation, collapse whitespace."""
     text = unicodedata.normalize("NFKD", text)
     text = "".join(c for c in text if not unicodedata.combining(c)).casefold()
-    text = re.sub(r"['’`]", "", text)          # don't -> dont
+    text = re.sub(r"['’`]", "", text)
     text = text.replace("&", " and ")
     return re.sub(r"[\W_]+", " ", text).strip()
 
@@ -160,12 +161,11 @@ candidates["author_score"] = [
 ]
 candidates_ok = candidates[candidates["author_score"] >= AUTHOR_THRESHOLD]
 
-# 3) Each Gutenberg book (etext_number) keeps one GoodReads edition: the one with the most ratings.
-# 4) Each GoodReads book (book_id) can appear only once. Gutenberg has several e-texts of the same work,
-#    so the one with the lowest etext number is kept.
+# 3) Each Gutenberg book (etext_number) keeps one GoodReads edition: the one with the best author match and then the most ratings.
+# 4) Each GoodReads book (book_id) can appear only once. Gutenberg might have several e-texts of the same work, so the one with the lowest etext number is kept.
 merged_books_df = (
     candidates_ok
-    .sort_values("ratings_count", ascending=False)
+    .sort_values(["author_score", "ratings_count"], ascending=False)
     .drop_duplicates(subset="etext_number", keep="first")
     .sort_values("etext_number", key=lambda s: pd.to_numeric(s, errors="coerce"))
     .drop_duplicates(subset="book_id", keep="first")
@@ -184,8 +184,7 @@ pd.DataFrame({
     "author_score": no_match["author_score"],
 }).to_csv("../data/matching_rejected_pairs.csv", index=False)
 
-print(f"    Title+author pairs: {len(candidates_ok)} of {len(candidates)} | "
-      f"Gutenberg books without author match: {len(no_match)} | merged books: {len(merged_books_df)}")
+print(f"    Title + author pairs: {len(candidates_ok)} of {len(candidates)} | \n    Gutenberg books without author match: {len(no_match)} | merged books: {len(merged_books_df)}")
 
 print(f"    Datasets have been merged: {merged_books_df.shape}")
 
@@ -193,7 +192,7 @@ print(f"    Datasets have been merged: {merged_books_df.shape}")
 # --- 3.2. Downloading cover images for those merged books ---
 #
 # It downloads around 2 book covers per second
-
+# Helper functions for image downloading
 def fetch_image_bytes(url: str):
     try:
         resp = requests.get(url, timeout=10)
@@ -217,8 +216,8 @@ def fetch_images_with_progress(df: pd.DataFrame) -> pd.Series:
 
 print(f"\n[3.2/7] Downloading cover images for {len(merged_books_df)} books...")
 
-merged_books_df["image_base64"] = None # fetch_images_with_progress(merged_books_df)
-merged_books_df["has_image"]   = merged_books_df["image_base64"].isna()
+merged_books_df["image_base64"] = fetch_images_with_progress(merged_books_df)
+merged_books_df["has_image"]   = merged_books_df["image_base64"].notna()
 
 ok_count = merged_books_df["has_image"].sum()
 print(f"      Completed: {ok_count}/{len(merged_books_df)}")
@@ -332,7 +331,7 @@ books_elastic_relationaldb_df['genres_expanded'] = books_elastic_relationaldb_df
 print(f"    Genres have been added for each book for elasticsearch and relational DB: {books_elastic_relationaldb_df.shape}")
 
 # For vector DB
-books_vectordb_df['genres'] = books_vectordb_df['book_id'].astype(str).map(genre_book_id_to_genre_expanded)
+books_vectordb_df['genres'] = books_vectordb_df['book_id'].astype(str).map(genre_book_id_to_genre)
 books_vectordb_df['genres'] = books_vectordb_df['genres'].apply(
     lambda x: x if isinstance(x, list) else []
 )
