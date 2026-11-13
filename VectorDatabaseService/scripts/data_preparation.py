@@ -195,7 +195,7 @@ print(f"    Datasets have been merged: {merged_books_df.shape}")
 # Helper functions for image downloading
 def fetch_image_bytes(url: str):
     try:
-        resp = requests.get(url, timeout=10)
+        resp = requests.get(url, timeout=15)
         resp.raise_for_status()
         Image.open(BytesIO(resp.content)).verify()
         return base64.b64encode(resp.content).decode("utf-8")
